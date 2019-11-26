@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learning Vue</title>
+</head>
+
+<body>
+
+    <div id="app">
+        {{greet}}
+        <br>
+        <input type="text" v-model="color" name="" id="">
+        <!-- conditional statement in VUE -->
+        <div v-if="color == 'blue'">
+            Color is Blue
+        </div>
+        <div v-else-if="color == 'red'">
+            Color is Red
+        </div>
+        <div v-else="">
+            Color is Unknown
+        </div>
+        <!-- alternative to v-if is v-show -->
+        <div v-show="1===0">
+            true
+        </div>
+    </div>
+
+
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                greet: 'Hello World',
+                inpValue: 'My input value',
+                color: 'red'
+            }
+        });
+    </script>
+</body>
+
+</html>
