@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .red {
+        border: 1px solid red;
+    }
+    
+    .green {
+        border: 2px solid green;
+    }
+</style>
+
+<body>
+    <!--           VUE DIRECTIVES 
+        -----------------------------------------
+        v-bind, this is used to bind an html attribute like disabled in input 
+        syntax: v-bind:attr="condition"
+        short-hand for v-bind:attr = :attr
+    -->
+    <div id="app">
+        <!-- To dynamically toogle a class/id attr:
+            object method:
+                :class="{className: condition}"
+                
+            another method using javascript turnary:
+                :class="[condition ? className]"
+                e.g :class="[email.length < 2 ? red : green]"
+        -->
+
+        <p v-text="myText"></p>
+        <!-- v-text renders the data as plain text (shows the html code), while v-html renders the data as an html data -->
+        <p v-once>{{email}}</p>
+        <!-- v-once will not make the rendered data reactive -->
+        <input type="" v-model="email" :class="[email.length < 2 ? 'red' : 'green']">
+        <button onclick="alert('Submit successfull')" v-bind:disabled="email.length < 4">Submit</button>
+    </div>
+    <script src="vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                email: 'asaolu',
+                myText: '<b>Subscribe to news letter</b>'
+            }
+        });
+    </script>
+</body>
+
+</html>
