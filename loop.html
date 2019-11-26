@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learning Vue</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Loopig with vue</h1>
+        <ol>
+            <!-- just like looping in js, for i in variable -->
+            <li v-for="user in users">{{user}}</li>
+        </ol>
+        <!-- v-on:keyup.keyType="method()" -->
+        <!-- <input type="" v-on:keyup.enter="alert()"> -->
+        <input type="text" v-model="author" placeholder="Book Author">
+        <input type="text" v-model="title" placeholder="Book Title">
+        <button v-on:click="addBook"> + Add</button>
+        <ul>
+            <li v-for="book in books">
+                Title: {{book.title | capitalize}}, &nbsp;&nbsp;Author: {{book.author | capitalize}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                users: [
+                    'elijah',
+                    'lucky',
+                    'iphone',
+                    'topzy'
+                ],
+                author: '',
+                title: '',
+                books: [{
+                    title: 'Book 1',
+                    author: 'Asaolu Elijah'
+                }, {
+                    title: 'Book 2',
+                    author: 'Opuama Lucky'
+                }]
+
+            },
+            methods: {
+                addBook: function() {
+                    this.books.push({
+                        title: this.title,
+                        author: this.author
+                    });
+                    this.title = "";
+                    this.author = "";
+                }
+            },
+            // Filters: used along with a method in vue
+            filters: {
+                capitalize: function(value) {
+                    return value.toUpperCase();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
